@@ -109,6 +109,15 @@ mpirun -np ${SLURM_NTASKS} ./NombreDePrograma > salida.out 2>&1
 - Verifica que los conteos de primos y los ordenamientos sean coherentes comparándolos con ejecuciones secuenciales.
 - Para `Merge-Split` y `Regular Sampling`, prueba con datasets pequeños antes de escalar para medir tiempos.
 
+### Pruebas automatizadas
+- Instala un entorno con MPI disponible (por ejemplo `sudo apt-get install -y mpich`).
+- Ejecuta todas las comprobaciones locales con:
+  ```bash
+  make test
+  ```
+  El objetivo compila cada fuente principal con `mpicc`/`gcc -fopenmp`, genera datasets pequeños cuando es necesario y verifica salidas básicas (saludos, conteos de primos y ordenamientos).
+- Limpia artefactos de compilación de pruebas con `make clean-test`.
+
 ## Buenas prácticas
 - Compila siempre con flags de depuración cuando estés desarrollando: `mpicc -g -Wall -Wextra -lm fuente.c -o binario`.
 - Documenta el número de procesos y el tamaño de entrada al registrar resultados experimentales.
