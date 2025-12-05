@@ -110,7 +110,7 @@ mpirun -np ${SLURM_NTASKS} ./NombreDePrograma > salida.out 2>&1
 - Para `Merge-Split` y `Regular Sampling`, prueba con datasets pequeños antes de escalar para medir tiempos.
 
 ### Pruebas automatizadas
-- Instala un entorno con MPI disponible (por ejemplo `sudo apt-get install -y mpich`).
+- Instala un entorno con MPI disponible (por ejemplo `sudo apt-get install -y mpich`). Si `mpicc` o `mpirun` no están presentes, el script de pruebas se omite de forma segura y avisa por consola.
 - Ejecuta todas las comprobaciones locales con:
   ```bash
   make test
